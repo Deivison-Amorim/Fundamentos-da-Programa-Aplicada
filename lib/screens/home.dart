@@ -9,7 +9,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Feedback-Presentation App"),
+        leading: Icon(Icons.menu),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+      body: Container(
         color: Colors.lightBlue,
         child: Text(
           "Feedback-Presentation",
@@ -17,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.white,
             fontSize: 25,
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
