@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'
     show BuildContext, MaterialApp, StatelessWidget, Widget, runApp;
+import 'package:flutter_application_1/screens/cadastro_aluno.dart';
 import 'package:flutter_application_1/screens/home.dart';
 import 'package:flutter_application_1/screens/login.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Feedback-Presentantion',
-      home: LoginScreeen(),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

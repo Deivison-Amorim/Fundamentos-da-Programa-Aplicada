@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/cadastro_user.dart';
+import 'package:flutter_application_1/screens/esqueci_senha.dart';
 
-class LoginScreeen extends StatefulWidget {
-  const LoginScreeen({Key? key}) : super(key: key);
+import 'home.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
   @override
-  State<LoginScreeen> createState() => _LoginScreeenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreeenState extends State<LoginScreeen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool continueConnected = false;
   @override
   Widget build(BuildContext context) {
@@ -77,6 +81,12 @@ class _LoginScreeenState extends State<LoginScreeen> {
             ),
             GestureDetector(
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EsqueciSenha(),
+                  ),
+                );
                 print("Clique aqui!");
               },
               child: Text(
@@ -89,7 +99,14 @@ class _LoginScreeenState extends State<LoginScreeen> {
               padding: EdgeInsets.only(bottom: 10),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
               child: Text("Login"),
             ),
             Padding(
@@ -106,9 +123,19 @@ class _LoginScreeenState extends State<LoginScreeen> {
                 fontSize: 13,
               ),
             ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+            ),
             ElevatedButton(
-              onPressed: () {},
-              child: Text("Cadastre-se"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CadastroUsuario(),
+                  ),
+                );
+              },
+              child: Text("Cadastre-se aqui!"),
             ),
           ],
         ),
