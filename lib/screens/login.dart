@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/cadastro_user.dart';
 import 'package:flutter_application_1/screens/esqueci_senha.dart';
-
 import 'home.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,6 +12,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool continueConnected = false;
+
+  final _form = GlobalKey<FormState>();
+  String nome = '';
+  String senha = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: EdgeInsets.only(bottom: 10),
             ),
             Form(
+              key: _form,
               child: Column(
                 children: [
                   TextFormField(
@@ -72,6 +77,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.white,
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Login ou senha inválido!";
+                      }
+                      return null;
+                    },
                   )
                 ],
               ),
@@ -100,6 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             ElevatedButton(
               onPressed: () {
+                _form.currentState?.validate();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

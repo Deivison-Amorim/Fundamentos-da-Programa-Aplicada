@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/provider/users.dart';
 import 'package:flutter_application_1/screens/home.dart';
-import 'package:flutter_application_1/screens/login.dart';
+import 'package:provider/provider.dart';
 
-import 'cadastro_user.dart';
+import '../models/user.dart';
 
 class CadastroAluno extends StatefulWidget {
   const CadastroAluno({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class CadastroAluno extends StatefulWidget {
 }
 
 class _CadastroAlunoState extends State<CadastroAluno> {
+  final _form = GlobalKey<FormState>();
+  final Map<String, String> _formData = {};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +72,7 @@ class _CadastroAlunoState extends State<CadastroAluno> {
               padding: EdgeInsets.only(bottom: 10),
             ),
             Form(
+              key: _form,
               child: Column(
                 children: [
                   TextFormField(
@@ -81,6 +85,13 @@ class _CadastroAlunoState extends State<CadastroAluno> {
                         color: Colors.white,
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Campo inválido!";
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _formData["nome"] = value!,
                   ),
                   TextFormField(
                     autofocus: true,
@@ -92,6 +103,13 @@ class _CadastroAlunoState extends State<CadastroAluno> {
                         color: Colors.white,
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Campo inválido!";
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _formData["serie"] = value!,
                   ),
                   TextFormField(
                     autofocus: true,
@@ -103,6 +121,13 @@ class _CadastroAlunoState extends State<CadastroAluno> {
                         color: Colors.white,
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Campo inválido!";
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _formData["apresentacao"] = value!,
                   ),
                 ],
               ),
@@ -111,7 +136,11 @@ class _CadastroAlunoState extends State<CadastroAluno> {
               padding: EdgeInsets.only(bottom: 10),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                _form.currentState?.save();
+                _form.currentState?.validate();
+                Navigator.of(context).pop;
+              },
               child: Text("Cadastrar"),
             ),
           ],
